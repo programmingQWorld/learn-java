@@ -11,6 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.shiro.mgt.SecurityManager;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class HelloWorld {
     private static final Logger log = LoggerFactory.getLogger(HelloWorld.class);  // 获取到logger实例
     @Test
@@ -57,5 +61,34 @@ public class HelloWorld {
         System.out.println(blessMatchResult);
     }
 
+    @Test
+    public void testSubList () {
+        List list = new ArrayList();
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        List resultList =  list.subList(2, 4);
+        System.out.println(resultList);
+        resultList.set(0, "这是一个纠结.");
+        System.out.println(resultList);
+        resultList.add("当心，我是颗炸弹.");
+        System.out.println(resultList);
+        System.out.println(list);
+        list.add("一颗真正的炸弹");
+        System.out.println(list);
+        System.out.println("遍历子列表");;
+        System.out.println(resultList);  // 影响了原列表的个数，再来遍历|增加|修改子列表就报出异常了
+    }
+
+    @Test
+    public void testAsList() {
+        String[] strs = new String[] {"a", "b", "c"};
+        List list = Arrays.asList(strs);
+        //list.add("c");  报出异常
+        strs[0] = "世界和平";
+        System.out.println(list);
+    }
 
 }
