@@ -1,0 +1,7 @@
+# 过滤iml文件
+*.iml
+
+#过滤文件夹 target, out
+target/
+out/
+
