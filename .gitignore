@@ -1,11 +1,10 @@
 # 过滤iml文件
 *.iml
+.idea
 
 #过滤文件夹 target, out
 
 target/
-
 out/
 
-.idea/*
 
