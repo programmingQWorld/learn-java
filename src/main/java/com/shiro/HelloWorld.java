@@ -1,5 +1,6 @@
 package com.shiro;
 
+import com.shiro.commonenum.UserEnum;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.session.Session;
@@ -39,4 +40,22 @@ public class HelloWorld {
         }
 
     }
+
+    /**
+     * 测试   枚举类
+     */
+    @Test
+    public void enumTest () {
+        UserEnum userEnum = UserEnum.NO_REGISTERED;
+        System.out.println("code: " + userEnum.getCode());
+        System.out.println("info: " + userEnum.getInfo());
+
+        String blessing = "Happy New Year!";
+        String blessing2 = "Merry Christmas!";
+        String blessing3 = "Merry Christmas!";
+        boolean blessMatchResult = java.util.Objects.equals(null, null);   // true
+        System.out.println(blessMatchResult);
+    }
+
+
 }
