@@ -1,15 +1,21 @@
 package com.shiro;
 
 import com.shiro.commonenum.UserEnum;
+import com.shiro.realm.Person;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.shiro.mgt.SecurityManager;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,4 +97,36 @@ public class HelloWorld {
         System.out.println(list);
     }
 
+    @Test
+	public void testSort () {
+    	int[] arr = new int[] {5, 7, 2, 8, 1};
+	        for (int i = 0; i <  arr.length - 1; i++) {
+	        	for (int j = 0; j < arr.length - i - 1; j++) {
+	        		if (arr[j] > arr[j + 1]) {
+	        			int temp = arr[j];
+	        			arr[j] = arr[j + 1];
+	        			arr[j + 1] = temp;
+			        }
+		        }
+		        System.out.println("第"+i+"趟，数组的最后一位：" + arr[arr.length - 1 - i]);
+	        }
+	        forEach(arr);
+    }
+
+	/**
+	 * 遍历数组
+	 */
+	public static void forEach (int[] arr) {
+	    for( int i : arr ) {
+		    System.out.println(i);
+	    }
+    }
+    @Test
+	public void testFastSort () {
+	    int[] arr = new int[] {5, 7, 2, 8, 1};
+	    for (int i = 0; i < arr.length; i++) {
+
+	    }
+	    System.out.println(7/2);
+    }
 }

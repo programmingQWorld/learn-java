@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 在最初的时候是空的不需要配置的样子 -->
+    <!-- spring-shiro入门配置 -->
+    <!-- 第一步创建securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 缓存管理 -->
+        <!-- Realm -->
+        <property name="realm" ref = "jdbcRealm" />
+    </bean>
+    <bean id = "jdbcRealm" class = "com.shiro.realm.ShiroRealm"></bean>
+
+    <!-- 第二步创建securityManager工厂 -->
+    <bean id="ShiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 项目首页  -->
+        <property name="loginUrl" value="/index.jsp"/>
+        <!-- 登录认证成功后的首页 -->
+        <property name="successUrl" value="/success.jsp"/>
+        <!-- 登录成功后访问某些页面但是没权限时跳转到的页面 -->
+        <property name="unauthorizedUrl" value="/unauthorizedUrl.jsp"/>
+        <!-- 配置相应jsp页面访问权限 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--
+                anon 表示可以被匿名访问即公开的页面
+                authc 表示需要认证即登录后才能访问的页面
+                /** 表示所有页面
+                -->
+                /index.jsp = anon
+                /login.jsp = anon
+                /login = anon
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+    <!-- 管理spring容器中的shiro对象生命周期 -->
+    <!-- 启动shiro相关注解，使其生效 -->
+
 </beans>

@@ -12,6 +12,14 @@
 </head>
 <body>
 <h3>Log On</h3>
-控制器
+
+<form action="login" method="post">
+    <div>
+        <div>username:<input type="text" name="username" /></div>
+        <div>password:<input type="password" name="password" /></div>
+        <div><input type="submit" /></div>
+    </div>
+</form>
+
 </body>
 </html>
